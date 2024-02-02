@@ -42,5 +42,23 @@ public class UserTest {
 		} else {
 			System.out.println(TestUtils.TEXT_COLOR_RED + "TC2-getPassword-Failed" + TestUtils.TEXT_COLOR_RESET);
 		}
+		
+		if(testUser.getFirstName() == testFirstName) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC3-getFirstName-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC3-getFirstName-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
+		
+		if(testUser.getLastName() == testLastName) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC4-getLastName-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC4-getLastName-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
+		
+		if(testUser.getMobileNumber() == testMobileNumber) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC5-getMobileNumber-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC5-getMobileNumber-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
 	}
 }
