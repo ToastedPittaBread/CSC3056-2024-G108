@@ -8,10 +8,6 @@ public class UserTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		testUserConstructor();
-	}
-	
-	public static void testUserConstructor() {
 		// move all the test code of the User Constructor from the main() to this method
 		/* OLD: manual testing
 		 * User testUser = new User("mike", "my_password", "Mike", "Smith", "07771234567");
