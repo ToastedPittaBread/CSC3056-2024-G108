@@ -8,10 +8,6 @@ public class UserTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		testUserConstructor();
-	}
-	
-	public static void testUserConstructor() {
 		// move all the test code of the User Constructor from the main() to this method
 		/* OLD: manual testing
 		 * User testUser = new User("mike", "my_password", "Mike", "Smith", "07771234567");
@@ -41,6 +37,24 @@ public class UserTest {
 			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC2-getPassword-Passed" + TestUtils.TEXT_COLOR_RESET);
 		} else {
 			System.out.println(TestUtils.TEXT_COLOR_RED + "TC2-getPassword-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
+		
+		if(testUser.getFirstName() == testFirstName) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC3-getFirstName-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC3-getFirstName-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
+		
+		if(testUser.getLastName() == testLastName) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC4-getLastName-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC4-getLastName-Failed" + TestUtils.TEXT_COLOR_RESET);
+		}
+		
+		if(testUser.getMobileNumber() == testMobileNumber) {	
+			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC5-getMobileNumber-Passed" + TestUtils.TEXT_COLOR_RESET);
+		} else {
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TC5-getMobileNumber-Failed" + TestUtils.TEXT_COLOR_RESET);
 		}
 	}
 }
