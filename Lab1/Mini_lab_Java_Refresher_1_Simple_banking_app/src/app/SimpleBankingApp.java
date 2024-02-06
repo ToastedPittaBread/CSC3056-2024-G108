@@ -68,12 +68,12 @@ public class SimpleBankingApp {
 		System.out.println("There are: " + accounts.size() + " accounts in the system.");
 		//System.out.println("Account_number | username_of_account_holder | account_type | account_opening_date");
 
-		System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s", 
+		System.out.println(String.format("%-10s| %-30s| %-10s| %-16s| %-15s", 
 				"Account #", "username_of_account_holder", "type", "opening_date", "Balance"));
-		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------------------------------------------------");
 		
 		for  (int i = 0; i < accounts.size(); i++) 
-            System.out.println(accounts.get(i).toString() + "| $" + getBalance(accounts.get(i).getAccountNumber()));
+            System.out.println(accounts.get(i).toString() + " | $" + getBalance(accounts.get(i).getAccountNumber()));
 		
 		System.out.println();
 	}
@@ -92,9 +92,16 @@ public class SimpleBankingApp {
 	 * @return A double value, being the balance of the account
 	 */
 	public static double getBalance(String account_number) {
-		return 0;
-		// TODO
+		// TODO 6
+		double balance = 0.0;
 		
+		for(int i = 0; i < transactions.size(); i++) {
+			if (transactions.elementAt(i).getAccountNumber() == account_number) {
+				balance += transactions.elementAt(i).getTransactionAmount();
+			}
+		}
+		
+		return balance;
 	}
 	
 	

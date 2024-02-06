@@ -50,6 +50,8 @@ public class User {
 	}
 	
 	public String toString() {
-		return username + ", " + password + ", " + firstName + ", " + lastName + ", " + mobileNumber;
+		// return username + ", " + password + ", " + firstName + ", " + lastName + ", " + mobileNumber;
+		return String.format("%-25s| %-15s| %-15s| %-15s| %-15s", 
+				username, password, firstName, lastName, mobileNumber);
 	}
 }

@@ -1,12 +1,12 @@
 package tests;
 
-import model.Account;
-
-import utils.TestUtils;
+import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
-import java.text.SimpleDateFormat;
+import model.Account;
+
+import utils.TestUtils;
 
 public class AccountTest {
 
