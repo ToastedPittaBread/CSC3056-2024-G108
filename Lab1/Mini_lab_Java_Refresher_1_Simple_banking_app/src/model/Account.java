@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 public class Account {
 	private String accountNumber;
 	private String usernameOfAccountHolder;
-	private String accountType; // "Standard" or "Saving"
+	private String accountType; // "Standard" or "Savings"
 	private Date accountOpeningDate;
 	
 	public Account(String accountNumber, String usernameOfAccountHolder, String accountType, 
