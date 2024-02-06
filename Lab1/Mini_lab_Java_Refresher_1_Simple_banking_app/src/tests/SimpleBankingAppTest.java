@@ -1,8 +1,8 @@
 package tests;
 
-import utils.TestUtils;
-
 import app.SimpleBankingApp;
+
+import utils.TestUtils;
 
 public class SimpleBankingAppTest {
 	// system under test (SUT):

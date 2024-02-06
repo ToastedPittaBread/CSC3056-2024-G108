@@ -1,8 +1,8 @@
 package model;
 
-import java.util.Date;
-
 import java.text.SimpleDateFormat;
+
+import java.util.Date;
 
 public class Account {
 	private String accountNumber;
@@ -46,6 +46,12 @@ public class Account {
 	}
 	
 	public String toString() {
-		return accountNumber + ", " + usernameOfAccountHolder + ", " + accountType + ", " + accountOpeningDate;
+		// return accountNumber + ", " + usernameOfAccountHolder + ", " + accountType + ", " + accountOpeningDate;
+
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = formatter.format(accountOpeningDate);
+        
+		return String.format("%-10s| %-30s| %-10s| %-15s",
+				accountNumber, usernameOfAccountHolder, accountType, formattedDate);
 	}
 }

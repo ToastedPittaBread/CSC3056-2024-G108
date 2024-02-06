@@ -1,8 +1,8 @@
 package model;
 
-import java.util.Date;
-
 import java.text.SimpleDateFormat;
+
+import java.util.Date;
 
 public class Transaction {
 	private String accountNumber;
@@ -41,6 +41,8 @@ public class Transaction {
 	}
 	
 	public String toString() {
-		return accountNumber + ", " + transactionAmount + ", " + transactionDate;
+		// return accountNumber + ", " + transactionAmount + ", " + transactionDate;
+		return String.format("%-15s | %-15s | %-15s", 
+				accountNumber, transactionAmount, transactionDate);
 	}
 }
