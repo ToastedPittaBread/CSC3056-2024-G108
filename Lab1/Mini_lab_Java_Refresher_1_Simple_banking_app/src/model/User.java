@@ -11,7 +11,7 @@ public class User {
 			String mobileNumber) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = password; // injected intentional defect: line is commented
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mobileNumber = mobileNumber;
