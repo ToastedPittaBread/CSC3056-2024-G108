@@ -20,12 +20,18 @@ public class RangeTest {
 		
 	}
 
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testCentralValueShouldBeZero() {
 		assertEquals("When the range is between -1 and 1, the central value should be 0", 0, 
 				rangeObjectUnderTest.getCentralValue(), 0.000000001d);
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetLengthWithEqualPositiveValues() {
 		Range r1 = new Range(2, 2);
@@ -34,6 +40,9 @@ public class RangeTest {
 				+ "be 0", 0.0, r1.getLength(), 0.0000001d);
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetLengthWithNonEqualPositiveValues() {
 		Range r2 = new Range(4, 9);
@@ -42,6 +51,9 @@ public class RangeTest {
 				+ "be 5", 5.0, r2.getLength(), 0.0000001d);
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetLengthWithEqualNegativeValues() {
 		Range r3 = new Range(-99, -99);
@@ -50,6 +62,9 @@ public class RangeTest {
 				+ "be 0", 0.0, r3.getLength(), 0.0000001d);
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetLengthWithNonEqualNegativeValues() {
 		Range r4 = new Range(-11, -4);
@@ -58,6 +73,9 @@ public class RangeTest {
 				+ "be 7", 7.0, r4.getLength(), 0.0000001d);
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetLengthWithOnePositiveOneNegativeValues() {
 		Range r5 = new Range(-5, 3);

@@ -40,12 +40,18 @@ public class DataUtilitiesTest {
 		objectUnderTest = null;
 	}
 
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testValidDataAndColumnTotal() { 
 		assertEquals("When valid data supplied in data table, 5.0 should be returned", 
 				5.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d); 
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testNullDataAndColumnTotal() { 
 		try {
@@ -58,6 +64,9 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	/*
+	 * Example from lab sheet
+	 */
 	@Test
 	public void testGetCumulativePercentages() { 
 		assertEquals("When valid data is supplied, the cumulative percentage should be 1.0", 
