@@ -67,6 +67,7 @@ public class DataUtilitiesTest {
 				4.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
 	}
 
+	// Errors without (expected = IndexOutOfBoundsException.class)
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void testCalculateColumnTotalWithValidDataAndInvalidColumnValueLessThan0() { 
 		int column = -1;
@@ -75,6 +76,7 @@ public class DataUtilitiesTest {
 				0.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
 	}
 
+	// Errors without (expected = IndexOutOfBoundsException.class)
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void testCalculateColumnTotalWithValidDataAndInvalidColumnValueGreaterThanNumberOfColumns() { 
 		int column = 13;
@@ -169,6 +171,7 @@ public class DataUtilitiesTest {
 				12.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
 	}
 
+	// Errors without (expected = IndexOutOfBoundsException.class)
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void testCalculateRowTotalWithValidDataAndInvalidRowValueLessThan0() { 
 		int row = -1;
@@ -177,6 +180,7 @@ public class DataUtilitiesTest {
 				0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
 	}
 
+	// Errors without (expected = IndexOutOfBoundsException.class)
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void testCalculateRowTotalWithValidDataAndInvalidRowValueGreaterThanNumberOfRows() { 
 		int row = 13;
