@@ -67,22 +67,30 @@ public class DataUtilitiesTest {
 				4.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
 	}
 
-	// Errors without (expected = IndexOutOfBoundsException.class)
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test 
 	public void testCalculateColumnTotalWithValidDataAndInvalidColumnValueLessThan0() { 
-		int column = -1;
+		try {
+			int column = -1;
 		
-		assertEquals("When valid 2D matrix and invalid column value supplied, 0.0 should be returned", 
-				0.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+			assertEquals("When valid 2D matrix and invalid column value supplied, 0.0 should be returned", 
+					0.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+		} catch (IndexOutOfBoundsException e) {
+			fail("Exception of type: IndexOutOfBoundsException was thrown. The expected outcome was"
+					+ " a value of 0.0 returned when valid 2D matrix and invalid column value supplied");
+		}
 	}
 
-	// Errors without (expected = IndexOutOfBoundsException.class)
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test
 	public void testCalculateColumnTotalWithValidDataAndInvalidColumnValueGreaterThanNumberOfColumns() { 
-		int column = 13;
+		try {
+			int column = 13;
 		
-		assertEquals("When valid 2D matrix and invalid column value supplied, 0.0 should be returned", 
-				0.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+			assertEquals("When valid 2D matrix and invalid column value supplied, 0.0 should be returned", 
+					0.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+		} catch (IndexOutOfBoundsException e) {
+			fail("Exception of type: IndexOutOfBoundsException was thrown. The expected outcome was"
+					+ " a value of 0.0 returned when valid 2D matrix and invalid column value supplied");
+		}
 	}
 
 	@Test
@@ -171,22 +179,30 @@ public class DataUtilitiesTest {
 				12.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
 	}
 
-	// Errors without (expected = IndexOutOfBoundsException.class)
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test
 	public void testCalculateRowTotalWithValidDataAndInvalidRowValueLessThan0() { 
-		int row = -1;
+		try {
+			int row = -1;
 		
-		assertEquals("When valid 2D matrix and invalid row value supplied, 0.0 should be returned", 
-				0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+			assertEquals("When valid 2D matrix and invalid row value supplied, 0.0 should be returned", 
+					0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+		} catch (IndexOutOfBoundsException e) {
+			fail("Exception of type: IndexOutOfBoundsException was thrown. The expected outcome was"
+					+ " a value of 0.0 returned when valid 2D matrix and invalid row value supplied");
+		}
 	}
 
-	// Errors without (expected = IndexOutOfBoundsException.class)
-	@Test (expected = IndexOutOfBoundsException.class)
-	public void testCalculateRowTotalWithValidDataAndInvalidRowValueGreaterThanNumberOfRows() { 
-		int row = 13;
+	@Test
+	public void testCalculateRowTotalWithValidDataAndInvalidRowValueGreaterThanNumberOfRows() {
+		try {
+			int row = 13;
 		
-		assertEquals("When valid 2D matrix and invalid row value supplied, 0.0 should be returned", 
-				0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+			assertEquals("When valid 2D matrix and invalid row value supplied, 0.0 should be returned", 
+					0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+		} catch(IndexOutOfBoundsException e) {
+			fail("Exception of type: IndexOutOfBoundsException was thrown. The expected outcome was"
+					+ " a value of 0.0 returned when valid 2D matrix and invalid row value supplied");
+		}
 	}
 
 	@Test
