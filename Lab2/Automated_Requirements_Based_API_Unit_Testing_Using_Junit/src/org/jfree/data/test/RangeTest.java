@@ -19,11 +19,15 @@ public class RangeTest {
 		range2 = new Range(4, 7);
 		rangeNull = new Range(0, 0);
 		rangeNull = null;
-		rangeEmpty = new Range(0,0);
+		rangeEmpty = new Range(0, 0);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		range1 = null;
+		range2 = null;
+		rangeNull = null;
+		rangeEmpty = null;
 	}
 
 	@Test
@@ -205,7 +209,7 @@ public class RangeTest {
 
 	@Test
 	public void testGetLowerBoundRangeEmpty() {
-		Range expected = new Range(0,0);
+		Range expected = new Range(0, 0);
 
 		assertEquals("When provided range is specified, the lowest value should be returned, "
 				+ "lower bound should be empty", expected, rangeEmpty.getLowerBound());
@@ -216,7 +220,8 @@ public class RangeTest {
 
 		assertEquals("When provided range is specified, the lowest value should be returned, "
 				+ "lower bound should be null", null, rangeNull.getLowerBound());
-	}
+		
+		}
 
 	@Test
 	public void testCombineBothRangesSpecified() {
@@ -252,7 +257,7 @@ public class RangeTest {
 
 	@Test
 	public void testCombineBothRangesEmpty() {
-		Range expected = new Range(0,0);
+		Range expected = new Range(0, 0);
 
 		assertEquals("When both ranges are empty, the final range should also be empty", expected,
 				Range.combine(rangeEmpty, rangeEmpty));
