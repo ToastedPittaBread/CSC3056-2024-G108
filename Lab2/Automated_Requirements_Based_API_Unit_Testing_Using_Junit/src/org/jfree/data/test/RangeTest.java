@@ -170,8 +170,13 @@ public class RangeTest {
 		double value = -2;
 		Range expected = new Range(-2, 5);
 
-		assertEquals("When provided value is on the lower bound, the range should not change"
-				+ "The range should still be -2 to 5", expected, Range.expandToInclude(range1, value));
+		try {
+			assertEquals("When provided value is on the lower bound, the range should not change"
+					+ "The range should still be -2 to 5", expected, Range.expandToInclude(range1, value));
+		} catch (IllegalArgumentException e) {
+			fail("Exception of type: IllegalArgumentException was thrown. The expected outcome was:"
+					+ "The range should be -2 to 5");
+		}
 	}
 
 	@Test
@@ -217,26 +222,37 @@ public class RangeTest {
 
 	@Test
 	public void testGetLowerBoundRangeNull() {
-
-		assertEquals("When provided range is specified, the lowest value should be returned, "
-				+ "lower bound should be null", null, rangeNull.getLowerBound());
-		
+		try {
+			assertEquals("When provided range is specified, the lowest value should be returned, "
+					+ "lower bound should be null", null, rangeNull.getLowerBound());
+		} catch (NullPointerException e) {
+			fail("Exception of type: NullPointerException was thrown. The expected outcome was:"
+					+ "lower bound should be null");
 		}
+	}
 
 	@Test
 	public void testCombineBothRangesSpecified() {
 		Range expected = new Range(-2, 7);
-
-		assertEquals("When two ranges are specified, the ranges should be combined to extend the final range, "
-				+ "the range should now be -2 to 7", expected, Range.combine(range1, range2));
+		try {
+			assertEquals("When two ranges are specified, the ranges should be combined to extend the final range, "
+					+ "the range should now be -2 to 7", expected, Range.combine(range1, range2));
+		} catch (IllegalArgumentException e) {
+			fail("Exception of type: IllegalArgumentExcpetion was thrown.The expected outcome was "
+					+ "the range should now be -2 to 7");
+		}
 	}
 
 	@Test
 	public void testCombineRange2Empty() {
 		Range expected = new Range(-2, 5);
-
-		assertEquals("When only one range is specified, the final range should be the range which was specified "
-				+ "the range should now be -2 to 5", expected, Range.combine(range1, rangeEmpty));
+		try {
+			assertEquals("When only one range is specified, the final range should be the range which was specified "
+					+ "the range should now be -2 to 5", expected, Range.combine(range1, rangeEmpty));
+		} catch (IllegalArgumentException e) {
+			fail("Exception of type: IllegalArgumentExcpetion was thrown.The expected outcome was "
+					+ "the range should now be -2 to 5");
+		}
 	}
 
 	@Test
@@ -251,8 +267,13 @@ public class RangeTest {
 	public void testCombineRange1Empty() {
 		Range expected = new Range(4, 7);
 
-		assertEquals("When one range is empty, the final range should be the range which was specified, "
-				+ "the range should now be 4 to 7", expected, Range.combine(rangeEmpty, range2));
+		try {
+			assertEquals("When one range is empty, the final range should be the range which was specified, "
+					+ "the range should now be 4 to 7", expected, Range.combine(rangeEmpty, range2));
+		} catch (IllegalArgumentException e) {
+			fail("Exception of type: IllegalArgumentExcpetion was thrown.The expected outcome was "
+					+ "the range should now be 4 to 7");
+		}
 	}
 
 	@Test
