@@ -456,4 +456,83 @@ public class DataUtilitiesTest {
 					e.getClass().equals(IllegalArgumentException.class));
 		}
 	}
+	
+	// WB Tests
+	@Test
+	public void testGetCumulativePercentagesWithNullValues() { 
+	    DefaultKeyedValues testNullValues = new DefaultKeyedValues();
+	    
+	    testNullValues.addValue((Comparable<?>) 0, null);
+	    testNullValues.addValue((Comparable<?>) 1, null);
+	    testNullValues.addValue((Comparable<?>) 2, null);
+	    
+		try {
+			DataUtilities.getCumulativePercentages(testNullValues);
+			fail("No exception was thrown. The expected outcome was a thrown exception of"
+					+ " type: IllegalArgumentException");
+		} catch (Exception e) {
+			assertTrue("When null data supplied, should throw IllegalArgumentException",
+					e.getClass().equals(IllegalArgumentException.class));
+		}
+	}
+	
+	@Test
+	public void testCalculateColumnTotalWithAllNegativeDataAndValidColumnValue() { 
+		DefaultKeyedValues2D testNegativeValues = new DefaultKeyedValues2D();
+		
+		testNegativeValues.addValue(-3, -4, -5);
+		testNegativeValues.addValue(-3, -2, -11);
+		
+		data = testNegativeValues;
+		
+		int column = 1;
+		
+		assertEquals("When valid 2D matrix and column value supplied, -6.0 should be returned", 
+				-6.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+	}
+	
+	@Test
+	public void testCalculateColumnTotalWithBothPoitiveAndNegativeDataAndValidColumnValue() { 
+		DefaultKeyedValues2D testNegativeValues = new DefaultKeyedValues2D();
+		
+		testNegativeValues.addValue(3, -4, 5);
+		testNegativeValues.addValue(-3, 0, -11);
+		
+		data = testNegativeValues;
+		
+		int column = 1;
+		
+		assertEquals("When valid 2D matrix and column value supplied, -4.0 should be returned", 
+				-4.0, DataUtilities.calculateColumnTotal(data, column), 0.0000001d); 
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithAllNegativeDataAndValidRowValue() { 
+		DefaultKeyedValues2D testNegativeValues = new DefaultKeyedValues2D();
+		
+		testNegativeValues.addValue(-3, -4, -5);
+		testNegativeValues.addValue(-3, -2, -11);
+		
+		data = testNegativeValues;
+		
+		int row = 0;
+		
+		assertEquals("When valid 2D matrix and row value supplied, -6.0 should be returned", 
+				-6.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithBothPositiveAndNegativeDataAndValidRowValue() { 
+		DefaultKeyedValues2D testNegativeValues = new DefaultKeyedValues2D();
+		
+		testNegativeValues.addValue(3, -4, 5);
+		testNegativeValues.addValue(-3, 0, -11);
+		
+		data = testNegativeValues;
+		
+		int row = 0;
+		
+		assertEquals("When valid 2D matrix and row value supplied, 0.0 should be returned", 
+				0.0, DataUtilities.calculateRowTotal(data, row), 0.0000001d); 
+	}
 } 
