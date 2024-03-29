@@ -456,8 +456,7 @@ public class DataUtilitiesTest {
 					e.getClass().equals(IllegalArgumentException.class));
 		}
 	}
-	
-	// WB Tests
+
 	@Test
 	public void testGetCumulativePercentagesWithNullValues() { 
 	    DefaultKeyedValues testNullValues = new DefaultKeyedValues();
