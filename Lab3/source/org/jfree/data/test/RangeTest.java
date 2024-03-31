@@ -1,4 +1,4 @@
-package org.jfree.data.test;
+package org.jfree.data;
 
 import static org.junit.Assert.*;
 
@@ -67,6 +67,17 @@ public class RangeTest {
 						+ "false should be returned",
 				range1.intersects(lower, upper), false);
 	}
+	
+	@Test
+	public void testIntersectsLowerBoundLessThan() {
+		double lower = -7;
+		double upper = 2;
+
+		assertEquals("When provided bounds intersect the specified range, " + "true should be returned",
+				range1.intersects(lower, upper), true);
+	}
+	
+	
 
 	@Test
 	public void testConstrainValueLessThanLowerBound() {
@@ -314,5 +325,108 @@ public class RangeTest {
 		assertEquals("When both ranges are null, the final range should also be null", null,
 				Range.combine(rangeNull, rangeNull));
 	}
+	
+	@Test
+	public void testExpandValidMargins() {
+		double lowerMargin = -4;
+		double upperMargin = 8;
+		
+		Range expected = new Range(-4, 8);
+
+		assertEquals("When the expand method is given a valid range and valid margins, the final range should be expanded to -4, 8", expected,
+				Range.expand(range1, lowerMargin, upperMargin));
+	}
+	
+	@Test
+	public void testExpandRangeIsEmpty() {
+		double lowerMargin = -4;
+		double upperMargin = 8;
+		
+		Range expected = new Range(-4, 8);
+
+		assertEquals("When the range is empty, a new range should be created using the given margins", expected,
+				Range.expand(rangeEmpty, lowerMargin, upperMargin));
+	}
+	
+	@Test
+	public void testExpandRangeIsNull() {
+		try {
+		double lowerMargin = -4;
+		double upperMargin = 8;
+		
+		Range expected = new Range(-4, 8);
+
+		assertEquals("When the provided range is null, the final range should be created using the provided margins", expected,
+				Range.expand(rangeNull, lowerMargin, upperMargin));
+		} catch(IllegalArgumentException e) {
+			fail("Exception of type: IllegalArgumentException was thrown. The expected output was that a range would be created using the margins that were provided.");
+			
+		}
+	}
+	
+	@Test
+	public void testShiftValidRange() {
+		double value = 2;
+		
+		Range expected = new Range(0, 7);
+
+		assertEquals("When the range is provided with a valid range and delta, the range should be shifted by the given amount. The new range should be 0, 7", expected,
+				Range.shift(range1, value));
+	}
+	
+	@Test
+	public void testShiftDeltaZero() {
+		double value = 0;
+		
+		Range expected = new Range(-2, 5);
+
+		assertEquals("When the delta provided to the method is 0, the range should remain the same. In this case, the range should be -2, 5", expected,
+				Range.shift(range1, value));
+	}
+	
+	@Test
+	public void testShiftRangeEmpty() {
+		double value = 2;
+		
+		Range expected = new Range(0,0);
+
+		assertEquals("When the range provided to the method is empty, the new range should also be empty", expected,
+				Range.shift(rangeEmpty, value));
+	}
+	
+	@Test
+	public void testShiftNegativeDelta() {
+		double value = -4;
+		
+		Range expected = new Range(-6, 1);
+
+		assertEquals("When the delta is a negative number, the range should be lowered. The new range should now be -6, 1", expected,
+				Range.shift(range1, value));
+	}
+	
+	@Test
+	public void testShiftAllowZeroCrossing() {
+		double value = -6;
+		
+		Range expected = new Range(-2, 1);
+
+		assertEquals("When allow zero crossing is enabled, the range is allowed to be negative if there were previously no numbers, the new range should now be -2, 1", expected,
+				Range.shift(range2, value, true));
+	}
+	
+	@Test
+	public void testGetCentralValueValidRange() {
+
+		assertEquals("When the method is given a valid range, the value directly in the middle should be returned, in this case, that number is 2", 2,
+				range1.getCentralValue());
+	}
+	
+	@Test
+	public void testHashCode() {
+
+		assertEquals("A hash code should be generated based on the given range", 0,
+				range1.hashCode());
+	}
+
 
 }
