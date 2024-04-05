@@ -197,6 +197,8 @@ public strictfp class Range implements Serializable {
      */
     public static Range combine(Range range1, Range range2) {
         if (range1 == null) {
+    	// a mutation
+    	// if (range1 != null) {
             return range2;
         }
         else {
@@ -209,6 +211,8 @@ public strictfp class Range implements Serializable {
                 double u = Math.max(range1.getUpperBound(), 
                         range2.getUpperBound());
                 return new Range(l, u);
+                // a mutation
+                // return new Range(u, 1);
             }
         }
     }
