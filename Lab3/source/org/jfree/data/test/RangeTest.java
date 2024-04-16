@@ -33,6 +33,7 @@ public class RangeTest {
 		rangeEmpty = null;
 	}
 
+	// Test fails
 	@Test
 	public void testIntersectsValidBounds() {
 		double lower = 3;
@@ -72,15 +73,13 @@ public class RangeTest {
 	}
 	
 	@Test
-	public void testIntersectsLowerBoundLessThan() {
+	public void testIntersectsLowerBoundLessThanUpperBound() {
 		double lower = -7;
 		double upper = 2;
 
 		assertEquals("When provided bounds intersect the specified range, " + "true should be returned",
 				range1.intersects(lower, upper), true);
 	}
-	
-	
 
 	@Test
 	public void testConstrainValueLessThanLowerBound() {
@@ -155,6 +154,7 @@ public class RangeTest {
 				expected, Range.expandToInclude(range1, value));
 	}
 
+	// Test fails
 	@Test
 	public void testExpandToIncludeRangeIsNullAndValueLessThanLowerBound() {
 		double value = -5;
@@ -163,6 +163,7 @@ public class RangeTest {
 				+ "The new range should now be -5", (-5), Range.expandToInclude(rangeNull, value));
 	}
 
+	// Test fails
 	@Test
 	public void testExpandToIncludeRangeIsNullAndValueWithinRange() {
 		double value = 1;
@@ -171,6 +172,7 @@ public class RangeTest {
 				+ "The new range should now be 1", (1), Range.expandToInclude(rangeNull, value));
 	}
 
+	// Test fails
 	@Test
 	public void testExpandToIncludeRangeIsNullAndValueGreaterThanUpperBound() {
 		double value = 9;
@@ -202,6 +204,7 @@ public class RangeTest {
 				+ "The range should still be -2 to 5", expected, Range.expandToInclude(range1, value));
 	}
 
+	// Test fails
 	@Test
 	public void testExpandToIncludeRangeIsNullAndValueOnLowerBound() {
 		double value = -2;
@@ -210,6 +213,7 @@ public class RangeTest {
 				+ "The new range should now be -2", (-2.0), Range.expandToInclude(rangeNull, value));
 	}
 
+	// Test fails
 	@Test
 	public void testExpandToIncludeRangeIsNullAndValueOnUpperBound() {
 		double value = 7;
@@ -220,12 +224,12 @@ public class RangeTest {
 
 	@Test
 	public void testGetLowerBoundRangeSpecified() {
-
 		assertEquals(
 				"When provided range is specified, the lowest value should be returned, " + "lower bound should be -2",
 				-2.0, range1.getLowerBound(), 0.0000001d);
 	}
 
+	// Test fails
 	@Test
 	public void testGetLowerBoundRangeEmpty() {
 		Range expected = new Range(0, 0);
@@ -234,6 +238,7 @@ public class RangeTest {
 				+ "lower bound should be empty", expected, rangeEmpty.getLowerBound());
 	}
 
+	// Test fails
 	@Test
 	public void testGetLowerBoundRangeNull() {
 		try {
@@ -269,6 +274,7 @@ public class RangeTest {
 		}
 	}
 
+	// Test fails
 	@Test
 	public void testCombineRange2Null() {
 		Range expected = new Range(-2, 5);
@@ -277,6 +283,7 @@ public class RangeTest {
 				+ "the range should now be -2 to 5", expected, Range.combine(range1, rangeNull));
 	}
 
+	// Test fails
 	@Test
 	public void testCombineRange1Empty() {
 		Range expected = new Range(4, 7);
@@ -298,11 +305,10 @@ public class RangeTest {
 				Range.combine(rangeEmpty, rangeEmpty));
 	}
 
+	// Test fails
 	@Test
-
 	public void testCombineRange1EmptyRange2Null() {
-
-		assertEquals("When one range is empty and the other is null, the final range should be null", null,
+		assertEquals("When one range is empty and the other is null, the final range should be empty", rangeEmpty,
 				Range.combine(rangeEmpty, rangeNull));
 	}
 
@@ -317,8 +323,7 @@ public class RangeTest {
 
 	@Test
 	public void testCombineRange1NullRange2Empty() {
-
-		assertEquals("When one range is empty and the other is null, the final range should be null", null,
+		assertEquals("When one range is empty and the other is null, the final range should be empty", rangeEmpty,
 				Range.combine(rangeNull, rangeEmpty));
 	}
 
@@ -337,6 +342,7 @@ public class RangeTest {
 				+ "the range should now be -2 to 9", expected, Range.combine(range1, range3));
 	}
 	
+	// Test fails
 	@Test
 	public void testExpandValidMargins() {
 		double lowerMargin = -4;
@@ -348,6 +354,7 @@ public class RangeTest {
 				Range.expand(range1, lowerMargin, upperMargin));
 	}
 	
+	// Test fails
 	@Test
 	public void testExpandRangeIsEmpty() {
 		double lowerMargin = -4;
@@ -359,6 +366,7 @@ public class RangeTest {
 				Range.expand(rangeEmpty, lowerMargin, upperMargin));
 	}
 	
+	// Test fails
 	@Test
 	public void testExpandRangeIsNull() {
 		try {
@@ -395,6 +403,7 @@ public class RangeTest {
 				Range.shift(range1, value));
 	}
 	
+	// Test fails
 	@Test
 	public void testShiftRangeEmpty() {
 		double value = 2;
@@ -425,19 +434,17 @@ public class RangeTest {
 				Range.shift(range2, value, true));
 	}
 	
+	//Test fails
 	@Test
 	public void testGetCentralValueValidRange() {
-
 		assertEquals("When the method is given a valid range, the value directly in the middle should be returned, in this case, that number is 2", 2,
-				range1.getCentralValue());
+				range1.getCentralValue(), 0.0000001d);
 	}
 	
+	// Test fails
 	@Test
 	public void testHashCode() {
-
 		assertEquals("A hash code should be generated based on the given range", 0,
 				range1.hashCode());
 	}
-
-
 }
