@@ -70,15 +70,13 @@ public class RangeTest {
 	}
 	
 	@Test
-	public void testIntersectsLowerBoundLessThan() {
+	public void testIntersectsLowerBoundLessThanUpperBound() {
 		double lower = -7;
 		double upper = 2;
 
 		assertEquals("When provided bounds intersect the specified range, " + "true should be returned",
 				range1.intersects(lower, upper), true);
 	}
-	
-	
 
 	@Test
 	public void testConstrainValueLessThanLowerBound() {
