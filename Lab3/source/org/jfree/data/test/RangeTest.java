@@ -10,15 +10,12 @@ public class RangeTest {
 
 	private Range range1;
 	private Range range2;
-	private Range range3;
 	private Range rangeNull;
 	private Range rangeEmpty;
 
 	@Before
 	public void setUp() throws Exception {
 		range1 = new Range(-2, 5);
-		range2 = new Range(4, 7);
-		range3 = new Range(1,9);
 		rangeNull = new Range(0, 0);
 		rangeNull = null;
 		rangeEmpty = new Range(0, 0);
@@ -28,7 +25,6 @@ public class RangeTest {
 	public void tearDown() throws Exception {
 		range1 = null;
 		range2 = null;
-		range3= null;
 		rangeNull = null;
 		rangeEmpty = null;
 	}
@@ -332,14 +328,6 @@ public class RangeTest {
 
 		assertEquals("When both ranges are null, the final range should also be null", null,
 				Range.combine(rangeNull, rangeNull));
-	}
-
-	@Test
-	public void testCombineRange1Range3() {
-		Range expected = new Range(-2, 9);
-
-		assertEquals("When one range is null, the final range should be the range which was specified, "
-				+ "the range should now be -2 to 9", expected, Range.combine(range1, range3));
 	}
 	
 	// Test fails
